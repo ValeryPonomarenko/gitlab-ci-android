@@ -35,6 +35,7 @@ RUN apt-get -qq update && \
       python-setuptools \
       apt-transport-https \
       lsb-release \
+      gnupg2 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
