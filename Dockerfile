@@ -8,7 +8,7 @@
 FROM ubuntu:18.04
 MAINTAINER Jan Grewe <jan@faked.org>
 
-ENV VERSION_SDK_TOOLS "4333796"
+ENV VERSION_SDK_TOOLS "3859397"
 
 ENV ANDROID_HOME "/sdk"
 ENV PATH "$PATH:${ANDROID_HOME}/tools"
@@ -63,7 +63,9 @@ RUN mkdir -p /root/.android && \
   touch /root/.android/repositories.cfg && \
   ${ANDROID_HOME}/tools/bin/sdkmanager --update
 
-RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && \
-    ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
-
 RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
+
+# RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && \
+#     ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
+
+# RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
