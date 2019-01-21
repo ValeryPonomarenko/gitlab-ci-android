@@ -5,10 +5,10 @@
 # https://git.faked.org/jan/gitlab-ci-android
 #
 
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 MAINTAINER Jan Grewe <jan@faked.org>
 
-ENV VERSION_SDK_TOOLS "3859397"
+ENV VERSION_SDK_TOOLS "4333796"
 
 ENV ANDROID_HOME "/sdk"
 ENV PATH "$PATH:${ANDROID_HOME}/tools"
@@ -60,7 +60,7 @@ RUN mkdir -p $ANDROID_HOME/licenses/ \
 ADD packages.txt /sdk
 RUN mkdir -p /root/.android && \
   touch /root/.android/repositories.cfg && \
-  ${ANDROID_HOME}/tools/bin/sdkmanager --update 
+  ${ANDROID_HOME}/tools/bin/sdkmanager --update
 
 RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && \
     ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
